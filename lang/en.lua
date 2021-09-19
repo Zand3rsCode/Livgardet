@@ -12,7 +12,7 @@ ZO_CreateStringId("LIVGARDET_BUTTON_SETTINGS", "Settings")
 ZO_CreateStringId("LIVGARDET_SHARE_ALLDAILIES", "Share all dailies")
 ZO_CreateStringId("LIVGARDET_SHARE_ZONEDAILIES", "Share all dailies from zone")
 ZO_CreateStringId("LIVGARDET_GROUPLEAVE", "Leave group")
-ZO_CreateStringId("LIVGARDET_PORT_BUTTON_TELEPORT", "Teleport (Zone)")
+ZO_CreateStringId("LIVGARDET_PORT_BUTTON_TELEPORT", "Teleport to City's")
 ZO_CreateStringId("LIVGARDET_PORT_BUTTON_TELEPORTWAY", "Teleport (Wayshrines)")
 ZO_CreateStringId("LIVGARDET_PORT_GRATHWOOD", "Grathwood")
 ZO_CreateStringId("LIVGARDET_PORT_STORMHAVEN", "Stormhaven")
@@ -125,12 +125,13 @@ ZO_CreateStringId("LIVGARDET_PORT_CHATTEXT_NODE_COST", " - The following gold ha
 ZO_CreateStringId("LIVGARDET_PORT_CHATTEXT_NODE_FALSE", "Unfortunately, you are not familiar with this wayshrine and you cannot teleport there!")
 ZO_CreateStringId("LIVGARDET_PORT_CHATTEXT_FALSE", "Unfortunately, there is no friend, group member or guild member in this zone :(")
 ZO_CreateStringId("LIVGARDET_REQRUIT", "Reqruit new members")
+
 -- Mail confirmation
 ZO_CreateStringId("LIVGARDET_SETTINGS_MAIL_DELETION", "Disable erase mail confirmation")
 ZO_CreateStringId("LIVGARDET_SETTINGS_MAIL_DELETION_TT", "This function removes the confirmation but only on mail without attachments")
 
 -- Improve gear confirmation
-ZO_CreateStringId("LIVGARDET_SETTINGS_CONFIRM_IMPROVE", "Enable Confirm confirmation")
+ZO_CreateStringId("LIVGARDET_SETTINGS_CONFIRM_IMPROVE", "Enable faster confirm dialog")
 ZO_CreateStringId("LIVGARDET_SETTINGS_CONFIRM_IMPROVE_TT", "This function adds the text CONFIRM when upgrading gear/jewelry/enchants so be careful.")
 
 -- Change Encant confirmation
@@ -170,4 +171,5 @@ ZO_CreateStringId("LIVGARDET_GUILDINVITED", "Invited <<C:1>> into \"<<2>>\" guil
 ZO_CreateStringId("LIVGARDET_CONFIRM_NOBOOK", "Quick Lorebook reading")
 ZO_CreateStringId("LIVGARDET_CONFIRM_NOBOOK_TT", "Hides the LoreBook from view when clicking them in world")
 
-
+--ZO_CreateStringId("LIVGARDET_SETTINGS_CRAFTAUTOLOOT", "Auto loot Crafting items")
+--ZO_CreateStringId("LIVGARDET_SETTINGS_CRAFTAUTOLOOT_TT", "When looting crafting items in the world they automaticly gets added to your inventory")

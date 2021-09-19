@@ -3,8 +3,9 @@ local LAM2 = LibAddonMenu2
 
 function Livgardet:InitializeChatIcon()
     local lg = WINDOW_MANAGER:CreateControl("Livgardet1", ZO_ChatWindow, CT_BUTTON)
-    lg:SetDimensions(20, 20)
-    lg:SetAnchor(TOPLEFT, ZO_ChatOptionsSectionLabel, TOPRIGHT, -100, 11)
+    lg:SetDimensions(55, 55)
+    --lg:SetAnchor(TOPLEFT, ZO_ChatOptionsSectionLabel, TOPRIGHT, -100, 11) 
+    lg:SetAnchor(TOPRIGHT, ZO_ActionBar1, TOPRIGHT, 110, -2)
     lg:SetHandler("OnMouseEnter", function(control)
         InitializeTooltip(InformationTooltip, control)
         SetTooltipText(InformationTooltip, "Livgardet", 1, 1, 1, LEFT, MODIFY_TEXT_TYPE_NONE, TEXT_ALIGN_CENTER, true)
@@ -84,13 +85,13 @@ function Livgardet:InitializeChatIcon()
             AddCustomSubMenuItem("" .. res.IconGrpTool .. GetString(LIVGARDET_BUTTON_GROUPTOOL), entries2, normalColor)
         end
 
-        AddCustomMenuItem("-", function()
+        AddCustomMenuItem("-", function() 
         end)
-        AddCustomSubMenuItem("" .. res.IconWay .. GetString(LIVGARDET_PORT_BUTTON_TELEPORT), entries3, normalColor)
-        AddCustomSubMenuItem("" .. res.IconWay .. GetString(LIVGARDET_PORT_BUTTON_TELEPORTWAY) .. " " .. GetRecallCost(node) .. res.IconGold, entries4, normalColor)
-        AddCustomMenuItem("-", function()
+        AddCustomSubMenuItem("" .. res.IconWay .. GetString(LIVGARDET_PORT_BUTTON_TELEPORT), entries3, normalColor) 
+--        AddCustomSubMenuItem("" .. res.IconWay .. GetString(LIVGARDET_PORT_BUTTON_TELEPORTWAY) .. " " .. GetRecallCost(node) .. res.IconGold, entries4, normalColor) 
+        AddCustomMenuItem("-", function() 
         end)
-        AddCustomMenuItem("" .. res.IconPld .. GetString(LIVGARDET_PLEDGES_BUTTON), function()
+        AddCustomMenuItem("" .. res.IconPld .. GetString(LIVGARDET_PLEDGES_BUTTON), function() 
             self:ListPledges()
         end)
         AddCustomMenuItem("-", function()
@@ -117,12 +118,13 @@ function Livgardet:InitializeChatIcon()
     self.chatIcon = lg
 end
 
+
 function Livgardet:ShowChatIcon(show)
     self.chatIcon:SetHidden(not show)
 end
 
 function Livgardet:SetChatIconTexture(monochrome)
-    self.chatIcon:SetNormalTexture(monochrome and "Livgardet/imgs/livgardeteso.dds" or "Livgardet/imgs/livgardeteso.dds")
-    self.chatIcon:SetPressedTexture(monochrome and "Livgardet/imgs/livgardeteso_pressed.dds" or "Livgardet/imgs/livgardeteso_pressed.dds")
-    self.chatIcon:SetMouseOverTexture("Livgardet/imgs/livgardeteso_hover.dds")
+    self.chatIcon:SetNormalTexture(monochrome and "Livgardet/imgs/normal.dds" or "Livgardet/imgs/normal.dds")
+    self.chatIcon:SetPressedTexture(monochrome and "Livgardet/imgs/normal.dds" or "Livgardet/imgs/normal.dds")
+    self.chatIcon:SetMouseOverTexture("Livgardet/imgs/normal.dds")
 end

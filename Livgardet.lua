@@ -15,20 +15,22 @@ Livgardet = {
 }
 
 function Livgardet:Initialize()
-    self.db = ZO_SavedVars:NewAccountWide("LivgardetSavedVars", 1, nil, self.defaults)
+    self.db = ZO_SavedVars:NewAccountWide("LivgardetSavedVars", 1, nil, self.defaults, self.version)
 
     self:InitializeMenu()
     self:InitializeChatIcon()
     self:InitializeNames()
     self:InitializeNoGuildLeave() 
     self:ShowChatIcon(self.db.showChatIcon)
-    self:SetChatIconTexture(self.db.monochromeIcon)
-
+    self:SetChatIconTexture(self.db.monochromeIcon) 
 end
 
 function Livgardet.OnAddOnLoaded(_, addon)
     if addon == Livgardet.name then
         Livgardet:Initialize()
+        DontReadBooks()
+        NoBugs()
+        AutoTrader()
     end
 end
 
@@ -52,6 +54,7 @@ end
 function Livgardet:InitializeNoGuildLeave()
     ZO_PreHook(GUILD_HOME, "RefreshAll", Livgardet.CheckNoGuildLeave)
 end
+
 
 EVENT_MANAGER:RegisterForEvent(Livgardet.name, EVENT_ADD_ON_LOADED, Livgardet.OnAddOnLoaded)
 

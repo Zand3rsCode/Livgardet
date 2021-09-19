@@ -29,34 +29,36 @@ end
 EVENT_MANAGER:RegisterForEvent("lgRollPing", EVENT_MAP_PING, HandlePingData)
 
 --WORKS !! BUG EATER.
-local bugTemp=0
-function NoBugs(event, addonName) 
-    if Livgardet.db.BugEater then 
-        if (bugTemp==0) then ZO_UIErrors_ToggleSupressDialog() 
-            bugTemp=1 
+function NoBugs() 
+    local bugTemp=0 
+    function NoBugs(event, addonName) 
+        if Livgardet.db.BugEater then 
+            if (bugTemp==0) then ZO_UIErrors_ToggleSupressDialog() 
+                bugTemp=1 
+            end 
         end 
-    end 
+    end
 end
 
 -- WORKS !! AUTO TRADER AND AUTOREPAIR. 
-ZO_PostHook(INTERACTION, 
-    "PopulateChatterOption", 
-    function (control, optionIndex, _, _, optionType) 
-        if Livgardet.db.AutoTrader then 
-            if optionIndex == 1 and optionType == CHATTER_START_TRADINGHOUSE or optiontype == CHATTER_START_MERCHANT then 
-                control:SelectChatterOptionByIndex(1) 
-            end 
-        end 
-    end) 
-    EVENT_MANAGER:RegisterForEvent(ADDON_NAME, EVENT_OPEN_STORE, function() 
-    local repairCost = GetRepairAllCost() 
-    if repairCost > 0 and CanStoreRepair() then 
-        if Livgardet.db.AutoRepair then
-            RepairAll() 
-            d("Everything repaired for: " .. repairCost .. " hard earned Gold")  
+function AutoTrader()
+ZO_PostHook(INTERACTION, "PopulateChatterOption", function (control, optionIndex, _, _, optionType) 
+    if Livgardet.db.AutoTrader then 
+        if optionIndex == 1 and optionType == CHATTER_START_TRADINGHOUSE then 
+            control:SelectChatterOptionByIndex(1) 
         end 
     end 
+end) 
+EVENT_MANAGER:RegisterForEvent(ADDON_NAME, EVENT_OPEN_STORE, function() 
+    local repairCost = GetRepairAllCost() 
+    if repairCost > 0 and CanStoreRepair() then 
+        if Livgardet.db.AutoRepair then 
+            RepairAll() 
+            d("Everything repaired for: " .. repairCost .. " hard earned Gold") 
+        end 
+    end
 end)
+end
 
 --WORKS !!  Removes the Mail delete confirmation if mail is empty. Does not remove attachments. | /esoui/ingame/mail/keyboard/mailinbox_keyboard.lua
 ZO_PreHook(MAIL_INBOX, "Delete", function(self)
@@ -70,7 +72,7 @@ ZO_PreHook(MAIL_INBOX, "Delete", function(self)
 end)
 
 -- WORKS !! ADDS CONFIRM TO THE DIALOG BOXES 
-local original = ZO_Dialogs_ShowDialog 
+--local original = ZO_Dialogs_ShowDialog 
 local function qconfirm(...)
     zo_callLater(function() 
         if Livgardet.db.ConfirmDialog then
@@ -102,7 +104,6 @@ local function NoConfirmTravel(name, data)
 end 
 ZO_PreHook("ZO_Dialogs_ShowDialog", NoConfirmTravel) 
 
-
 -- WORKS !! Guild Invite from Chat window.
 local function AddPlayerToGuild(name, guildid, guildname) 
     d(zo_strformat(LIVGARDET_GUILDINVITED, name, guildname)) 
@@ -123,8 +124,8 @@ CHAT_SYSTEM.ShowPlayerContextMenu = function(self, name, rawName, ...)
     end 
 end
 
--- Do not open books when reading ---- WORK IN PROGRESS !!!!!
-local function DontReadBooks()
+-- Works !! Do not open books when reading.
+function DontReadBooks()
 	local function OnShowBook(eventCode, title, body, medium, showTitle)
 		local willShow = LORE_READER:Show(title, body, medium, showTitle)
 		if willShow then

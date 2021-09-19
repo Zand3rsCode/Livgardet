@@ -14,7 +14,7 @@
 lang/en.lua
 data/media.lua
 data/teleport.lua
-modules/pledges.lua
+data/pledges.lua
 modules/qol.lua
 Livgardet.lua
 ChatIcon.lua

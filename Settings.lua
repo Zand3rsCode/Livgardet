@@ -32,20 +32,20 @@ function Livgardet:InitializeMenu()
                 self:ShowChatIcon(show)
             end,
         },
-        {
-            type = "checkbox",
-            name = GetString(LIVGARDET_SETTINGS_MONOCHROME_ICON),
-            getFunc = function()
-                return self.db.monochromeIcon
-            end,
-            setFunc = function(monochrome)
-                self.db.monochromeIcon = monochrome
-                self:SetChatIconTexture(monochrome)
-            end,
-            disabled = function()
-                return not self.db.showChatIcon
-            end
-        },
+ --       {
+ --           type = "checkbox",
+ --           name = GetString(LIVGARDET_SETTINGS_MONOCHROME_ICON),
+ --           getFunc = function()
+ --               return self.db.monochromeIcon
+ --           end,
+ --           setFunc = function(monochrome)
+ --               self.db.monochromeIcon = monochrome
+ --               self:SetChatIconTexture(monochrome)
+ --           end,
+ --           disabled = function()
+ --               return not self.db.showChatIcon
+ --           end
+  --      },
         {
             type = "dropdown",
             name = GetString(LIVGARDET_SETTINGS_NOGUILDLEAVE),
@@ -60,27 +60,34 @@ function Livgardet:InitializeMenu()
             end,
             default = leaveOption[self.defaults.noGuildLeave + 1],
         },
-        {
-            type = "header",
-            name = GetString(LIVGARDET_SETTINGS_HEADER_NAMES),
-            width = "full",
+        { -- BUG EATER.
+        type = 'checkbox', 
+        name = GetString(LIVGARDET_SETTINGS_BUGEATER), 
+        tooltip = GetString(LIVGARDET_SETTINGS_BUGEATER_TT), 
+        getFunc = function() return self.db.BugEater end, 
+        setFunc = function(value) self.db.BugEater = value end, 
         },
-        {
-            type = "description",
-            title = nil,
-            text = GetString(LIVGARDET_SETTINGS_HEADER_DESCRIPTION),
-            width = "full",
-        },
-        {
-            type = "checkbox",
-            name = GetString(LIVGARDET_SETTINGS_COLORIZE_GUILD_NAMES),
-            getFunc = function()
-                return self.db.colorizeNames
-            end,
-            setFunc = function(colorize)
-                self.db.colorizeNames = colorize
-            end,
-        },
+--        {
+--            type = "header",
+--            name = GetString(LIVGARDET_SETTINGS_HEADER_NAMES),
+--            width = "full",
+--        },
+--        {
+--            type = "description",
+--            title = nil,
+--            text = GetString(LIVGARDET_SETTINGS_HEADER_DESCRIPTION),
+--            width = "full",
+--        },
+--        {
+--            type = "checkbox",
+--            name = GetString(LIVGARDET_SETTINGS_COLORIZE_GUILD_NAMES),
+--            getFunc = function()
+--                return self.db.colorizeNames
+--            end,
+--            setFunc = function(colorize)
+--                self.db.colorizeNames = colorize
+--            end,
+--        },
         {
             type = "header",
             name = GetString(LIVGARDET_SETTINGS_HEADER_QOL),
@@ -112,7 +119,7 @@ function Livgardet:InitializeMenu()
             name = GetString(LIVGARDET_SETTINGS_AUTOTRADER),
             tooltip = GetString(LIVGARDET_SETTINGS_AUTOTRADER_TT),
             getFunc = function() return self.db.AutoTrader end,
-            setFunc = function(value) self.db.AutoTrader = value end,
+            setFunc = function(value) self.db.AutoTrader = value AutoTradeRepair() end,
          }, 
          { -- AUTO REPAIR.
             type = 'checkbox', 
@@ -120,14 +127,23 @@ function Livgardet:InitializeMenu()
             tooltip = GetString(LIVGARDET_SETTINGS_AUTOREPAIR_TT), 
             getFunc = function() return self.db.AutoRepair end, 
             setFunc = function(value) self.db.AutoRepair = value end,
-        }, 
-        { -- BUG EATER.
-            type = 'checkbox', 
-            name = GetString(LIVGARDET_SETTINGS_BUGEATER), 
-            tooltip = GetString(LIVGARDET_SETTINGS_BUGEATER_TT), 
-            getFunc = function() return self.db.BugEater end, 
-            setFunc = function(value) self.db.BugEater = value end,
-        }, 
+         }, 
+
+        { -- HIDE BOOK WHEN READING.
+        type = "checkbox",
+        name = GetString(LIVGARDET_SETTINGS_CONFIRM_NOBOOK),
+        tooltip = GetString(LIVGARDET_SETTINGS_CONFIRM_NOBOOK_TT),
+        getFunc = function() return self.db.dontReadBooks end,
+        setFunc = function(value) self.db.dontReadBooks = value DontReadBooks() end, 
+        },
+--        { -- AUTO LOOT CRAFTING MATERIALS.
+--        type = 'checkbox', 
+--        name = GetString(LIVGARDET_SETTINGS_CRAFTAUTOLOOT), 
+--        tooltip = GetString(LIVGARDET_SETTINGS_CRAFTAUTOLOOT_TT), 
+--        getFunc = function() return self.db.test22 end, 
+--        setFunc = function(value) self.db.test22 = value end, 
+--    }, 
+    
 }
 
     self.panel = LAM2:RegisterAddonPanel(self.name .. "Options", panelData)

@@ -16,7 +16,7 @@ local function updateNameColor(control, playerData)
 
     local displayNameControl = findPlayerNameObject(control)
 
-    local rankName = GetGuildRankCustomName(617104, rankIndex) or ""
+    local rankName = GetGuildRankCustomName(664190, rankIndex) or ""
     local rankColor = rankName:sub(3, 8)
     local color = ZO_ColorDef:New(rankColor)
 
