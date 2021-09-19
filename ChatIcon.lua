@@ -2,10 +2,11 @@ local res = LivgardetMediaRes
 local LAM2 = LibAddonMenu2
 
 function Livgardet:InitializeChatIcon()
-    local lg = WINDOW_MANAGER:CreateControl("Livgardet1", ZO_ChatWindow, CT_BUTTON)
-    lg:SetDimensions(55, 55)
+    --local lg = WINDOW_MANAGER:CreateControl("Livgardet1", ZO_ChatWindow, CT_BUTTON) 
+    local lg = WINDOW_MANAGER:CreateControl("Livgardet1", ZO_ActionBar1, CT_BUTTON)
+    lg:SetDimensions(54, 54)
     --lg:SetAnchor(TOPLEFT, ZO_ChatOptionsSectionLabel, TOPRIGHT, -100, 11) 
-    lg:SetAnchor(TOPRIGHT, ZO_ActionBar1, TOPRIGHT, 110, -2)
+    lg:SetAnchor(TOPRIGHT, ZO_ActionBar1, TOPRIGHT, 110, -1)
     lg:SetHandler("OnMouseEnter", function(control)
         InitializeTooltip(InformationTooltip, control)
         SetTooltipText(InformationTooltip, "Livgardet", 1, 1, 1, LEFT, MODIFY_TEXT_TYPE_NONE, TEXT_ALIGN_CENTER, true)
@@ -126,5 +127,5 @@ end
 function Livgardet:SetChatIconTexture(monochrome)
     self.chatIcon:SetNormalTexture(monochrome and "Livgardet/imgs/normal.dds" or "Livgardet/imgs/normal.dds")
     self.chatIcon:SetPressedTexture(monochrome and "Livgardet/imgs/normal.dds" or "Livgardet/imgs/normal.dds")
-    self.chatIcon:SetMouseOverTexture("Livgardet/imgs/normal.dds")
+    self.chatIcon:SetMouseOverTexture("Livgardet/imgs/hover.dds")
 end
