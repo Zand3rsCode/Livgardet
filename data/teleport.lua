@@ -28,14 +28,14 @@ LivgardetTeleportData = {
             label = res.IconTrv,
             id = 500,
         },
---        {
---            name = GetString(LIVGARDET_PORT_CHARBOUR),
---            label = res.IconTrv,
---            id = 347,
---        },
---        {
---            label = "-",
---        },
+        {
+            name = GetString(LIVGARDET_PORT_CHARBOUR),
+            label = res.IconTrv,
+            id = 347,
+        },
+        {
+            label = "-",
+        },
         {
             name = GetString(LIVGARDET_PORT_WROTHGAR),
             label = res.IconTrv,
@@ -72,12 +72,12 @@ LivgardetTeleportData = {
             id = 382,
             collectibleId = 5843,
         },
---        {
---            name = GetString(LIVGARDET_PORT_ELSWN),
---            label = res.IconTrv,
---            id = 681,
---            collectibleId = 5843,
---        },
+        {
+            name = GetString(LIVGARDET_PORT_ELSWN),
+            label = res.IconTrv,
+            id = 681,
+            collectibleId = 5843,
+        },
         {
             name = GetString(LIVGARDET_PORT_WESTSKYRIM),
             label = res.IconTrv,
@@ -157,12 +157,12 @@ LivgardetTeleportData = {
             id = 340,
             collectibleId = 1240,
         },
-        {
-            name = GetString(LIVGARDET_PORT_NODE_RIMMEN),
-            label = res.IconTrv,
-            id = 382,
-            collectibleId = 5843,
-        },
+--        {
+--            name = GetString(LIVGARDET_PORT_NODE_RIMMEN),
+--            label = res.IconTrv,
+--            id = 382,
+--            collectibleId = 5843,
+--        },
         {
             name = GetString(LIVGARDET_PORT_NODE_SOLITUDE),
             label = res.IconTrv,
